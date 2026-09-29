@@ -68,7 +68,7 @@
   (`qty: -1`, `NaN`, `'2'` throw RangeError; `price: 0` allowed; the worked example `=== 467400`).
   Noticed the test file now has two `options` objects — left as is, because the brief says keep the starter test unchanged.
 
-## 2026-09-29 — test for a negative qty
+## 2026-09-29 — test for a negative qty (commit 8bf58b0)
 - **Tool:** none.
 - **Asked for:** —
 - **By hand:** wrote 'a negative qty throws RangeError' in test/cart.test.js myself, following the 'qty of 0' test.
