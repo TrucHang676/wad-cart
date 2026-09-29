@@ -43,3 +43,8 @@ test('a qty of 0 throws RangeError', () => {
   const items = [{ name: 'A', price: 1000, qty: 0 }]
   assert.throws(() => cartTotal(items, options), RangeError)
 })
+
+test('a negative qty throws RangeError', () => {
+  const items = [{ name: 'A', price: 1000, qty: -1 }]
+  assert.throws(() => cartTotal(items, options), RangeError)
+})
