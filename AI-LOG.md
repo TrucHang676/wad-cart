@@ -74,13 +74,28 @@
 - **By hand:** wrote 'a negative qty throws RangeError' in test/cart.test.js myself, following the 'qty of 0' test.
   `npm test` 8/8 green, `npm run lint` clean.
 
-## 2026-09-29 — SELF_ASSESSMENT_REPORT.md
+## 2026-09-29 — format gate: Prettier (commit 4c1dc65)
+- **Tool:** Claude Code.
+- **Asked for:** add Prettier as a format gate: scripts, CI and CLAUDE.md.
+- **Kept:** all of it — `prettier` devDependency with `format` / `format:check` scripts; `.prettierrc.json`
+  (no semicolons, single quotes); `.gitattributes` forcing LF, since `autocrlf` on Windows would make Prettier fail locally;
+  a `format:check` step in ci.yml before lint; CLAUDE.md updated to match (incl. eslint.config.js as the one default-export exception).
+  It ran `format:check` red first (test/cart.test.js — mixed CRLF/LF, eslint.config.js — layout), then `format`, then green;
+  lint clean; `npm test` 8/8.
+- **Changed:** nothing.
+- **Rejected:** nothing.
+- **By hand:** reviewed the diff (test/cart.test.js changed only in line endings), split the work into two commits, pushed.
+  CI on 4c1dc65 green, with the new format:check step.
+
+## 2026-09-29 — SELF_ASSESSMENT_REPORT.md (commit b6c4839, updated after 4c1dc65)
 - **Tool:** Claude Code.
 - **Asked for:** score the submission against the rubric, criterion by criterion, with evidence, and write the report.
-- **Kept:** <fill in after reading it>
-- **Changed:** <fill in — any mark you moved up or down, and why>
-- **Rejected:** <fill in, or "nothing">
-- **By hand:** <fill in — at least checking each evidence line against the repository>
+- **Kept:** the table and the evidence lines; it filled in my student ID and name.
+- **Changed:** I first asked it to claim 100; it showed the honesty adjustment (a likely −3) and I chose to earn marks
+  instead — wrote the negative-qty test (Tests 18 → 20), then added the Prettier gate (Harness 18 → 20).
+  After that I set the total to 100 myself; it advised 96 (Brief 14, AI-LOG 12), and I kept 100.
+- **Rejected:** claiming 100/100 before the work was there.
+- **By hand:** the negative-qty test; read the report before committing.
 
 ## Note
 The entries above were drafted by Claude Code at my request, from the commit history and the output I sent it, and later translated
