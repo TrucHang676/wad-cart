@@ -7,8 +7,10 @@ changing any code. If README.md and a brief disagree, stop and ask.
 ## Stack
 - Node.js 22+, plain JavaScript, ES modules (`"type": "module"`).
 - Tests: built-in `node:test` + `node:assert/strict`. No test framework.
-- Lint: ESLint (`eslint.config.js`, recommended rules) — the only package in
-  this repo, and a devDependency. `src/` imports nothing.
+- Lint: ESLint (`eslint.config.js`, recommended rules).
+- Format: Prettier (`.prettierrc.json`: no semicolons, single quotes).
+- ESLint and Prettier are the only packages, both devDependencies. `src/` imports nothing.
+- Line endings are LF everywhere (`.gitattributes`), so Prettier passes on Windows and on CI.
 
 ## Files
 - `src/cart.js` — the implementation. Named export `cartTotal` only.
@@ -18,11 +20,13 @@ changing any code. If README.md and a brief disagree, stop and ask.
 ## Commands
 - `npm test` — runs every `*.test.js` under test/
 - `npm run lint` — ESLint on the whole repo
-- Done = both green locally AND on CI (`.github/workflows/ci.yml`, runs on push).
+- `npm run format:check` — Prettier check on src/, test/ and eslint.config.js
+- `npm run format` — let Prettier fix the formatting
+- Done = all three checks green locally AND on CI (`.github/workflows/ci.yml`, runs on push).
 
 ## Style
-- Match the starter: 2-space indent, single quotes, no semicolons.
-- Named exports, no default exports.
+- Match the starter: 2-space indent, single quotes, no semicolons — enforced by Prettier.
+- Named exports in src/ and test/, no default exports (eslint.config.js is the one exception; ESLint requires it).
 - Import paths keep the `.js` extension: `'../src/cart.js'`.
 
 ## Money
